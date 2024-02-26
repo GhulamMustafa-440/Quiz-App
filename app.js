@@ -31,6 +31,57 @@ const quizData = [
         d: 'none of them',
         correct: 'b',
     },
+    {
+        question: "Which language is used for defining the structure of a web page?",
+        a: "HTML",
+        b: "CSS",
+        c: 'JavaScript',
+        d: 'PHP',
+        correct: 'a'
+    },
+    {
+        question: "Which of the following is NOT a valid HTML tag?",
+        a: "<div>",
+        b: "<span>",
+        c: '<section>',
+        d: '<style>',
+        correct: 'd'
+    },
+    {
+        question: "Which CSS property is used to change the text color of an element?",
+        a: "background-color",
+        b: "color",
+        c: 'text-color',
+        d: 'font-color',
+        correct: 'b'
+    },
+    {
+        question: "Which JavaScript function is used to select an HTML element by its id?",
+        a: "getElementById()",
+        b: "querySelector()",
+        c: 'getElementsByClassName()',
+        d: 'getElementByTag()',
+        correct: 'a'
+    },
+    {
+        question: "What is the correct CSS syntax for making the text bold?",
+        a: "font-weight: bold;",
+        b: "text-style: bold;",
+        c: 'style: bold;',
+        d: 'font-bold: true;',
+        correct: 'a'
+    },
+    {
+        question: "Which event in JavaScript is triggered when a user clicks on an HTML element?",
+        a: "onmouseover",
+        b: "onclick",
+        c: 'onchange',
+        d: 'onsubmit',
+        correct: 'b'
+    },
+
+
+
 ];
 
 const quiz = document.getElementById('quiz')
@@ -48,7 +99,7 @@ let score = 0
 
 loadQuiz()
 
-function loadQuiz(){
+function loadQuiz() {
     deselectAnswers()
 
     const currentQuizData = quizData[currentQuiz]
@@ -61,14 +112,14 @@ function loadQuiz(){
 
 }
 
-function deselectAnswers(){
+function deselectAnswers() {
     answerEls.forEach(answerEl => answerEl.checked = false)
 }
 
 function getSelected() {
     let answer
-    answerEls.forEach(answerEl  => {
-        if(answerEl.checked){
+    answerEls.forEach(answerEl => {
+        if (answerEl.checked) {
             answer = answerEl.id
         }
     })
@@ -77,14 +128,14 @@ function getSelected() {
 
 next.addEventListener('click', () => {
     const answer = getSelected()
-    if(answer) {
-        if (answer === quizData[currentQuiz].correct){
+    if (answer) {
+        if (answer === quizData[currentQuiz].correct) {
             score++
         }
 
         currentQuiz++
 
-        if(currentQuiz < quizData.length) {
+        if (currentQuiz < quizData.length) {
             loadQuiz()
         } else {
             quiz.innerHTML = `
